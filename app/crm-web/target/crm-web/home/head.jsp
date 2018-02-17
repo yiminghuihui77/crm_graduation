@@ -38,22 +38,7 @@
 		setTimeout(exitCheck,5000);	
 	});
 	
-	$(function(){
-		setTimeout("change(1)",4000);	
-	});
-	
-	function change(n){
-		if(n>30) n=1;
-		$("#biaoti").attr("src","${pageContext.request.contextPath}/img/biaoti"+n+".png");
-		n++;
-		setTimeout("change("+n+")",4000);	
-	}
-	
-	/* $(function findflag() {
-		document.form.action ="${pageContext.request.contextPath}/SystemController/findflag.action";
-		document.form.submit();
-		setTimeout(findflag, 5000);
-	}); */
+
 	
 </script>
 
