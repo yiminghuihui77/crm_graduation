@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/crm_graduation.iml" filepath="$PROJECT_DIR$/crm_graduation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/crm-dao/crmdao.iml" filepath="$PROJECT_DIR$/common/crm-dao/crmdao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/crm-service/crmservice.iml" filepath="$PROJECT_DIR$/common/crm-service/crmservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/crm-web/crmweb.iml" filepath="$PROJECT_DIR$/app/crm-web/crmweb.iml" />
+    </modules>
+  </component>
+</project>

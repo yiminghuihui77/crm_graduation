@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="crmweb:war">
+    <output-path>$PROJECT_DIR$/app/crm-web/target</output-path>
+    <root id="archive" name="crm-web.war">
+      <element id="artifact" artifact-name="crmweb:war exploded" />
+    </root>
+  </artifact>
+</component>
