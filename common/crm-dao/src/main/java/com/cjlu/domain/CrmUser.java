@@ -1,23 +1,31 @@
 package com.cjlu.domain;
 
+import java.util.Date;
 import lombok.Data;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 @Data
 @ToString
 public class CrmUser {
-    /**  */
+    /** 主键 */
     private Integer id;
 
-    /**  */
+    /** 用户姓名 */
     private String name;
 
-    /**  */
+    /** 用户密码 */
     private String password;
 
-    /**  */
+    /** 角色编号 */
     private Integer roleId;
 
-    /**  */
-    private Integer flag;
+    /** 状态:ENABLE、DISABLE */
+    private String status;
+
+    /** 创建时间 */
+    private Date gmtCreated;
+
+    /** 修改时间 */
+    private Date gmtModified;
 }

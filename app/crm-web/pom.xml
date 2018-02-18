@@ -14,9 +14,11 @@
 
     <properties>
         <crm-service.version>1.0-SNAPSHOT</crm-service.version>
+        <crm-dao.version>1.0-SNAPSHOT</crm-dao.version>
     </properties>
 
     <dependencies>
+
         <!--service模块相关依赖-->
         <dependency>
             <groupId>com.cjlu</groupId>

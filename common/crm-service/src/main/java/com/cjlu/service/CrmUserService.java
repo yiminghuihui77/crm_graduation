@@ -1,8 +1,7 @@
 package com.cjlu.service;
 
 import com.cjlu.domain.CrmUser;
-
-import java.util.List;
+import com.cjlu.model.UserDTO;
 
 /**
  * @author minghui.y
@@ -12,5 +11,6 @@ public interface CrmUserService {
 
     CrmUser queryById(Integer id);
 
-    List<CrmUser> queryAllUsers();
+    /**服务*/
+    CrmUser login(UserDTO userDTO);
 }

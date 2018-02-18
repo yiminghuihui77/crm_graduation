@@ -1,13 +1,13 @@
 package com.cjlu.dao;
 
 import com.cjlu.domain.CrmUser;
+import com.cjlu.model.UserDTO;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-
+@Repository
 public interface CrmUserMapper {
     CrmUser selectByPrimaryKey(Integer id);
 
-    List<CrmUser> selectAllUsers();
+    /**登录*/
+    CrmUser loginByDTO(UserDTO userDTO);
 }

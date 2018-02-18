@@ -7,6 +7,9 @@
           <element id="module-output" name="crmweb" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="crm-web-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="crmweb" />
+          </element>
           <element id="archive" name="crm-service-1.0-SNAPSHOT.jar">
             <element id="module-output" name="crmservice" />
           </element>

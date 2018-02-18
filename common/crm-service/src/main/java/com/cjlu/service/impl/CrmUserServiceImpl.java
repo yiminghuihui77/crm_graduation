@@ -2,11 +2,11 @@ package com.cjlu.service.impl;
 
 import com.cjlu.dao.CrmUserMapper;
 import com.cjlu.domain.CrmUser;
+import com.cjlu.model.UserDTO;
 import com.cjlu.service.CrmUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 /**
  * @author minghui.y
@@ -26,8 +26,9 @@ public class CrmUserServiceImpl implements CrmUserService {
     }
 
     @Override
-    public List<CrmUser> queryAllUsers() {
-
-        return crmUserMapper.selectAllUsers();
+    public CrmUser login(UserDTO userDTO) {
+        return crmUserMapper.loginByDTO(userDTO);
     }
+
+
 }
