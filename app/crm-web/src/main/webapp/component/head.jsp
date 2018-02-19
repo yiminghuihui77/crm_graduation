@@ -13,7 +13,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.2.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.4.2.js"></script>
 <script type="text/javascript">
-	$(function exitCheck(){
+/*	$(function exitCheck(){
 		var id = $("#exitid").val();
 	    var params = {userid:id};
 		$.post("/CRM_SAN/UserAjax",params,function(data){
@@ -36,15 +36,13 @@
 			
 		},"text");
 		setTimeout(exitCheck,5000);	
-	});
+	});*/
 
-
-	
 </script>
 
   <body>
   	<form name="form" style="visibility: hidden;" method="post">
-  		<input type="hidden" id="exitid" name="userid"  value="${userid}">
+  		<input type="hidden" id="exitid" name="userid"  value="${userId}">
   	</form>
   	<!-- 头部 -->
 	<div class="head">
@@ -53,7 +51,10 @@
 		</div>
 		<div class="headR">
 			<p class="p1">
-				您好，${username}
+				您好，${userName}
+			</p>
+			<p class="p1">
+				${roleName}
 			</p>
 			<p id="show"></p>
 		</div>

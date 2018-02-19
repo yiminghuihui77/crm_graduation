@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cjlu.dao.CrmUserMapper">
+
   <resultMap id="BaseResultMap" type="com.cjlu.domain.CrmUser">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -10,6 +11,17 @@
     <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
   </resultMap>
+
+  <resultMap id="UserDTOMap" type="com.cjlu.model.UserDTO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="right_url" jdbcType="VARCHAR" property="rightUrl" />
+  </resultMap>
+
   <sql id="Base_Column_List">
     id, name, password, role_id, status, gmt_created, gmt_modified
   </sql>
@@ -27,4 +39,47 @@
     where name = #{name}
     and password = #{password}
   </select>
+
+  <select id="selectUserDetailById" parameterType="java.lang.Integer" resultMap="UserDTOMap" >
+    select u.id as id,u.name as name,u.`password` as `password`,u.status as status,
+       ro.id as role_id,ro.role_name as role_name,
+       ri.url as right_url
+    from crm_user u, crm_role ro, crm_right ri
+    where u.role_id = ro.id
+    and ro.right_id = ri.id
+    and u.id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectNormalUsers" resultMap="UserDTOMap" >
+    select u.id as id,u.name as name,u.`password` as `password`,u.status as status,
+       ro.role_name as role_name,
+       ri.url as right_url
+    from crm_user u, crm_role ro, crm_right ri
+    where u.role_id = ro.id
+    and ro.right_id = ri.id
+    and ro.id != 1
+  </select>
+
+  <insert id="insertUser" parameterType="com.cjlu.domain.CrmUser" >
+    insert into crm_user(name, password, role_Id, status, gmt_created, gmt_modified)
+    values(#{name}, #{password}, #{roleId}, #{status}, #{gmtCreated},  #{gmtModified})
+  </insert>
+
+  <delete id="deleteUserById" parameterType="java.lang.Integer" >
+    delete from crm_user
+    where id = #{id}
+  </delete>
+
+  <update id="updateUser" parameterType="com.cjlu.model.UserDTO" >
+    update crm_user
+    set name = #{name}, password = #{password}, status = #{status}, role_Id = #{roleId}
+    where id = #{id}
+  </update>
+
+  <update id="updatePwd" parameterType="com.cjlu.model.UserDTO" >
+    update crm_user
+    set password = #{password}
+    where id = #{id}
+  </update>
+
 </mapper>

@@ -41,7 +41,7 @@
 		
 		<!-- 要生成哪些表-->
 
-		<table tableName="crm_user"
+		<!--<table tableName="crm_user"
 		    domainObjectName="CrmUser"
 		    enableUpdateByExample="false"
 		    enableUpdateByPrimaryKey="false"
@@ -52,6 +52,6 @@
 			enableSelectByExample="false"
 			enableInsert="false">
 			<property name="useActualColumnNames" value="false"/>
-		</table>
+		</table>-->
 	</context>
 </generatorConfiguration>

@@ -20,8 +20,17 @@ public class UserDTO {
     /** 密码 */
     private String password;
 
+    /** 状态 */
+    private String status;
+
     /** 角色编号 */
     private Integer roleId;
+
+    /** 角色名称 */
+    private String roleName;
+
+    /** 权限URL */
+    private String rightUrl;
 
     /** 验证码 */
     private String yzm;

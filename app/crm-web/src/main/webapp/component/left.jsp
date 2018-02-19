@@ -14,30 +14,32 @@
     /* 按照权限登录时，隐藏树的模块  */
 	$(function(){
 		var arr0 = $("#parentCode").val();
+		// alert(arr0);
 		var arr=arr0.split(",");
-		for(var i=0;i &lt; arr.length;i++){
+		for(var i=0;i < arr.length;i++){
 			var v=document.getElementById(arr[i]);
 			v.style.visibility="hidden";
 			v.style.height="0";
 		}
 	});
+
 	
 </script>
 
   <body id="bg">
   	<!-- 先放入jsp中，在通过id在js中获取 -->
-    <input type="hidden" id="parentCode" value="${parentCode}">
-    <input type="hidden" id="exitid" value="${userid}">
+    <input type="hidden" id="parentCode" value="${rightUrl}">
+    <input type="hidden" id="exitid" value="${userId}">
     	<!-- 左边节点 -->
 	<div class="container">
 
 		<div class="leftsidebar_box">
-			<a href="${pageContext.request.contextPath}/home/main.jsp" target="main">
+			<a href="${pageContext.request.contextPath}/component/main.jsp" target="main">
 			<div class="line" >
 					<img src="${pageContext.request.contextPath}/img/coin01.png" />&nbsp;&nbsp;首页
 			</div>
 			</a>
-			<dl class="system_log" id="10">
+			<dl class="system_log" id="1">
 				<dt>
 					<img class="icon1" src="${pageContext.request.contextPath}/img/coin03.png" />
 					<img class="icon2" src="${pageContext.request.contextPath}/img/coin04.png" /> 营销管理
@@ -57,7 +59,7 @@
 					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
 				</dd>
 			</dl>
-			<dl class="system_log" id="20">
+			<dl class="system_log" id="2">
 				<dt>
 					<img class="icon1" src="${pageContext.request.contextPath}/img/coin05.png" />
 					<img class="icon2" src="${pageContext.request.contextPath}/img/coin06.png" /> 客户管理
@@ -77,45 +79,7 @@
 					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
 				</dd>
 			</dl>
-			<dl class="system_log" id="30">
-				<dt>
-					<img class="icon1" src="${pageContext.request.contextPath}/img/coin07.png" />
-					<img class="icon2" src="${pageContext.request.contextPath}/img/coin08.png" /> 服务管理
-					<img class="icon3" src="${pageContext.request.contextPath}/img/coin19.png" />
-					<img class="icon4" src="${pageContext.request.contextPath}/img/coin20.png" />
-				</dt>
-				<dd id="31">
-					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
-					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-					<a href="${pageContext.request.contextPath}/addServe.action" target="main" class="cks">服务创建</a>
-					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
-				</dd>
-				<dd id="32">  
-					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
-					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-						<a target="main" class="cks" href="${pageContext.request.contextPath}/disServeList.action" >服务分配</a>
-					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
-				</dd>
-				<dd id="33">
-					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
-					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-					<a class="cks" href="${pageContext.request.contextPath}/handleServeList.action" target="main">服务处理</a>
-					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
-				</dd>
-				<dd id="34">
-					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
-					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-				<a   class="cks" href="${pageContext.request.contextPath}/backServeList.action" target="main">服务反馈</a>
-					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
-				</dd>
-				<dd id="35">
-					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
-					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-					<a href="${pageContext.request.contextPath}/serveList.action" target="main" class="cks">服务查询</a>
-					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
-				</dd>
-			</dl>
-			<dl class="system_log" id="40">
+			<dl class="system_log" id="3">
 				<dt>
 					<img class="icon1" src="${pageContext.request.contextPath}/img/coin10.png" />
 					<img class="icon2" src="${pageContext.request.contextPath}/img/coin09.png" /> 统计报表
@@ -141,21 +105,7 @@
 					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
 				</dd>
 			</dl>
-			<dl class="system_log" id="50" style="visibility: hidden;height: 0">
-				<dt>
-					<img class="icon1" src="${pageContext.request.contextPath}/img/coin11.png" />
-					<img class="icon2" src="${pageContext.request.contextPath}/img/coin12.png" /> 基础数据
-					<img class="icon3" src="${pageContext.request.contextPath}/img/coin19.png" />
-					<img class="icon4" src="${pageContext.request.contextPath}/img/coin20.png" />
-				</dt>
-				<dd id="51">
-					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
-					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-					<a href="#" target="main" class="cks">产品信息查询</a>
-					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
-				</dd>
-			</dl>
-			<dl class="system_log" id="60">
+			<dl class="system_log" id="4">
 				<dt>
 					<img class="icon1" src="${pageContext.request.contextPath}/img/coin14.png" />
 					<img class="icon2" src="${pageContext.request.contextPath}/img/coin13.png" /> 系统管理
@@ -165,13 +115,13 @@
 				<dd id="61">
 					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
 					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-					<a href="${pageContext.request.contextPath}/SystemController/jurisdictionList.action" target="main" class="cks">权限管理</a>
+					<a href="${pageContext.request.contextPath}/SystemController/userList.action" target="main" class="cks">用户管理</a>
 					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
 				</dd>
 				<dd id="62">
 					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
 					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-					<a href="${pageContext.request.contextPath}/SystemController/pwdeditJsp.action" target="main" class="cks">密码修改</a>
+					<a href="${pageContext.request.contextPath}/SystemController/editPwdPage.action" target="main" class="cks">密码修改</a>
 					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
 				</dd>
 			</dl>
