@@ -2,8 +2,10 @@ package com.cjlu.dao;
 
 import com.cjlu.domain.CrmUser;
 import com.cjlu.model.UserDTO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -30,4 +32,7 @@ public interface CrmUserMapper {
 
     /**修改密码*/
     void updatePwd(UserDTO userDTO);
+
+    /**根据时间戳查询*/
+    List<CrmUser> findListAfterLocalLastModifyTime(@Param("gmtModified")Date gmtModified);
 }

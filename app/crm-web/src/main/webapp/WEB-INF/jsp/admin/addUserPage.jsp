@@ -30,7 +30,7 @@
             <span>
                 <a href="${pageContext.request.contextPath}/component/main.jsp" target="main">首页</a>&nbsp;-&nbsp;
                 <a href="${pageContext.request.contextPath}/SystemController/userList.action">用户管理</a>&nbsp;-
-				  </span>&nbsp;添加用户
+            </span>&nbsp;添加用户
         </div>
     </div>
     <div class="page ">

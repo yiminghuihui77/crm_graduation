@@ -17,7 +17,7 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
     <!-- service层实现类、controller层使用注解开发，需要指定扫描的包 -->
-    <context:component-scan base-package="com.cjlu.dao,com.cjlu.service.impl,com.cjlu.controller"></context:component-scan>
+    <context:component-scan base-package="com.cjlu.dao,com.cjlu.service.impl,com.cjlu.controller,com.cjlu.cache,com.cjlu.load"></context:component-scan>
  
     <!-- 统一转配处理器映射器、处理器是适配器   -->
      <!--<mvc:annotation-driven validator="validationFactory" conversion-service="conversionService1"></mvc:annotation-driven>-->

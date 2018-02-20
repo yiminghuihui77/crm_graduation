@@ -31,7 +31,12 @@ public class SystemController {
     public String loginMethod(HttpServletRequest request, HttpServletResponse response,
                                UserDTO userDTO, Model model) {
         //表单数据后端校验(包括验证码)
-
+        String inputYzm = userDTO.getYzm();
+        String rawYzm = (String)request.getSession().getAttribute("yzm");
+        if (!rawYzm.equalsIgnoreCase(inputYzm)) {
+            model.addAttribute("loginErr", "验证码有误，请重新输入！");
+            return "home/login";
+        }
         //调用相关服务从数据库查询
         CrmUser loginUser = userService.login(userDTO);
 

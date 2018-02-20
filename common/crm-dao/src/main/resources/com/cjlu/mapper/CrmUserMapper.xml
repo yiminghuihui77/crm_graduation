@@ -82,4 +82,14 @@
     where id = #{id}
   </update>
 
+  <select id="findListAfterLocalLastModifyTime" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from crm_user
+    WHERE 1
+    <if test="gmtModified != null">
+      AND gmt_modified>#{gmtModified}
+    </if>
+  </select>
+
 </mapper>

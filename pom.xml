@@ -18,10 +18,11 @@
 
     <!--版本号常量-->
     <properties>
-        <spring.version>3.0.5.RELEASE</spring.version>
+        <spring.version>4.3.4.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <c3p0.version>0.9.1.2</c3p0.version>
         <aspect.version>1.8.1</aspect.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <!--依赖-->
@@ -139,6 +140,19 @@
 
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <!--编译插件，不声明不能使用java8新特性-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+                <version>3.5.1</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

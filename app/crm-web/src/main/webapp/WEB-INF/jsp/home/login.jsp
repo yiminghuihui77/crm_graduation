@@ -44,8 +44,8 @@
                     ${error.defaultMessage }&nbsp;&nbsp;
                 </c:forEach>
             </c:if>
-            <c:if test="${loginerror!=null}">
-                ${loginerror}<br/>
+            <c:if test="${loginErr!=null}">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${loginErr}<br/>
             </c:if>
         </div>
 
@@ -63,7 +63,7 @@
             <div class="lgD logD2">
                 <input class="getYZM" type="text" id="yzm" name="yzm" value="请输入验证码" />
                 <div class="logYZM">
-                    <img  src="${pageContext.request.contextPath}/YZM" id="yzmImge" onload="rehref()">
+                    <img  src="${pageContext.request.contextPath}/verificationCode" id="yzmImge" onload="rehref()">
                 </div>
                 <a href="#" onclick="changeImge()" id="change">换一张</a>
             </div>
@@ -86,7 +86,7 @@
 <script type="text/javascript">
     function changeImge(){
         $("#change").removeAttr("href");
-        $("#yzmImge").attr("src","${pageContext.request.contextPath}/YZM?="+new Date().getTime());
+        $("#yzmImge").attr("src","${pageContext.request.contextPath}/verificationCode?="+new Date().getTime());
     }
     function rehref(){
         $("#change").attr("href","#");

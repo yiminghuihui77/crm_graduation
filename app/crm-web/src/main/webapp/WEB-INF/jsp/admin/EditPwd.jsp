@@ -49,18 +49,20 @@
                 <div class="baBody">
                     <div class="bbD">
                         <input type="hidden" class="input3" name="id" value="${userId}"/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名：<input type="text" class="input3" name="name"
-                                                                       value="${userName}" disabled/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        用户名：<input type="text" class="input3" name="name" value="${userName}" disabled/>
                     </div>
                     <div class="bbD">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码：<input type="password" class="input3" name="oldPassword" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        旧密码：<input type="password" class="input3" name="oldPassword" />
                     </div>
                     <p style="color: red">
                         <!--密码校验错误信息-->
                         ${editPwdErr}
                     </p>
                     <div class="bbD">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新密码：<input type="password" class="input3" name="newPassword" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        新密码：<input type="password" class="input3" name="newPassword" />
                     </div>
                     <div class="bbD">
                         <p class="bbDP">

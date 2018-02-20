@@ -49,7 +49,7 @@
 				<dd  id="11">
 					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
 					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-					<a class="cks" href="${pageContext.request.contextPath}/change/queryChange.action" target="main">销售机会</a>
+					<a class="cks" href="${pageContext.request.contextPath}/MarketingController/chanceList.action" target="main">销售机会</a>
 					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
 				</dd>
 				<dd id="12"><!-- ${pageContext.request.contextPath}/planList.action -->

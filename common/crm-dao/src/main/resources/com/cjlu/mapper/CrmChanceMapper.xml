@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cjlu.dao.CrmChanceMapper" >
+  <resultMap id="BaseResultMap" type="com.cjlu.domain.CrmChance" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="cus_name" property="cusName" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="success_rate" property="successRate" jdbcType="INTEGER" />
+    <result column="chance_desc" property="chanceDesc" jdbcType="VARCHAR" />
+    <result column="create_id" property="createId" jdbcType="INTEGER" />
+    <result column="due_id" property="dueId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ChanceDTOMap" type="com.cjlu.model.ChanceDTO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="cus_name" property="cusName" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="success_rate" property="successRate" jdbcType="INTEGER" />
+    <result column="chance_desc" property="chanceDesc" jdbcType="VARCHAR" />
+    <result column="create_id" property="createId" jdbcType="INTEGER" />
+    <result column="due_id" property="dueId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, source, cus_name, phone, success_rate, chance_desc, create_id, due_id, status, 
+    gmt_created, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from crm_chance
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectChances" resultMap="ChanceDTOMap" >
+    select id,source,cus_name, phone,
+       success_rate,chance_desc,
+       create_id,due_id,status
+    from crm_chance
+  </select>
+
+    <select id="findListAfterLocalLastModifyTime" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from crm_chance
+        WHERE 1
+        <if test="gmtModified != null">
+            AND gmt_modified>#{gmtModified}
+        </if>
+    </select>
+
+    <delete id="deleteChanceById" parameterType="java.lang.Integer" >
+        delete from crm_chance
+        where id = #{id}
+    </delete>
+
+    <update id="updateChance" parameterType="com.cjlu.model.ChanceDTO" >
+        update crm_chance
+        set source =#{source}, cus_name=#{cusName},phone=#{phone},success_rate=#{successRate},
+            chance_desc=#{chanceDesc},create_id=#{createId},due_id=#{dueId},status=#{status}
+        where id=#{id}
+    </update>
+
+</mapper>

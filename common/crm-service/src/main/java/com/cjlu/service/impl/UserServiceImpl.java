@@ -15,7 +15,7 @@ import java.util.List;
  * @create 2018-02-15 15:20
  **/
 @Service
-public class CrmUserServiceImpl implements CrmUserService {
+public class UserServiceImpl implements CrmUserService {
 
     @Autowired
     private CrmUserMapper crmUserMapper;
