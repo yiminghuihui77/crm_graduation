@@ -1,6 +1,7 @@
 package com.cjlu.service.impl;
 
 import com.cjlu.dao.CrmChanceMapper;
+import com.cjlu.domain.CrmChance;
 import com.cjlu.model.ChanceDTO;
 import com.cjlu.service.CrmChanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,12 @@ public class ChanceServiceImpl implements CrmChanceService {
     }
 
     @Override
-    public void refreshChance(ChanceDTO chanceDTO) {
-        chanceMapper.updateChance(chanceDTO);
+    public void refreshChance(CrmChance chance) {
+        chanceMapper.updateChance(chance);
+    }
+
+    @Override
+    public void addChance(CrmChance chance) {
+        chanceMapper.addChance(chance);
     }
 }

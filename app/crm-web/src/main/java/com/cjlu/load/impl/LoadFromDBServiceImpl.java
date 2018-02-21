@@ -42,7 +42,7 @@ public class LoadFromDBServiceImpl implements LoadFromDBService,InitializingBean
      * 没30秒从数据库加载一次
      */
     @Override
-    @Scheduled(cron = "0/30 * * * * ?")
+    @Scheduled(cron = "0/5 * * * * ?")
     public void loadFromDBToCache() {
         //加载用户表到缓存
         loadUsersFromDB();

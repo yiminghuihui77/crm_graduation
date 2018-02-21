@@ -22,5 +22,8 @@ public interface CrmChanceMapper {
     void deleteChanceById(Integer id);
 
     /**修改销售机会*/
-    void updateChance(ChanceDTO chanceDTO);
+    void updateChance(CrmChance chance);
+
+    /**添加销售机会*/
+    void addChance(CrmChance chance);
 }

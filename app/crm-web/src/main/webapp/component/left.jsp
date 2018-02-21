@@ -69,7 +69,7 @@
 				<dd id="21">
 					<img class="coin11" src="${pageContext.request.contextPath}/img/coin111.png" />
 					<img class="coin22" src="${pageContext.request.contextPath}/img/coin222.png" />
-					<a class="cks" href="${pageContext.request.contextPath}/listAllCustomers.action" target="main">客户信息管理</a>
+					<a class="cks" href="${pageContext.request.contextPath}/ClientController/queryCustomers.action" target="main">客户信息管理</a>
 					<img class="icon5" src="${pageContext.request.contextPath}/img/coin21.png" />
 				</dd>
 				<dd id="22">

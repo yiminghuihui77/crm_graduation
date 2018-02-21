@@ -2,9 +2,11 @@ package com.cjlu.controller;
 
 import com.cjlu.cache.CacheWrapperService;
 import com.cjlu.domain.CrmChance;
+import com.cjlu.domain.CrmCustomer;
 import com.cjlu.domain.CrmUser;
 import com.cjlu.model.ChanceDTO;
 import com.cjlu.service.CrmChanceService;
+import com.cjlu.service.CrmCustomerService;
 import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +31,9 @@ public class MarketingController {
 
     @Autowired
     private CrmChanceService chanceService;
+
+    @Autowired
+    private CrmCustomerService customerService;
 
     /**缓存服务*/
     @Autowired
@@ -68,7 +74,7 @@ public class MarketingController {
     }
 
     @RequestMapping("/editChancePage")
-    public String editChanceMethod(Integer id, Model model) {
+    public String editChancePageMethod(Integer id, Model model) {
         List<CrmChance> rawChances = cacheWrapperService.getChanceCache();
         CrmChance rawChance = rawChances.stream()
                 .filter((chance -> chance.getId().intValue() == id))
@@ -95,13 +101,54 @@ public class MarketingController {
     }
 
     @RequestMapping("/editChance")
-    public String editChanceMethod(ChanceDTO chanceDTO) {
+    public String editChanceMethod(CrmChance chance) {
         //调用相关服务修改到数据库中
-        chanceService.refreshChance(chanceDTO);
+        chance.setGmtModified(new Date());
+        chanceService.refreshChance(chance);
+        //销售主管可以影响到客户的状态；若未指派则将客户状态DISABLE
+        String status = chance.getStatus().intValue() == 0 ? "DISABLE" : "ENABLE";
+        String cusName = chance.getCusName();
+        String phone = chance.getPhone();
+        CrmCustomer customer = new CrmCustomer();
+        customer.setStatus(status);
+        customer.setCusName(cusName);
+        customer.setPhone(phone);
+        customerService.refreshStatus(customer);
         //重定向到销售机会列表页面
         return "redirect:/MarketingController/chanceList.action";
     }
 
+    @RequestMapping("/addChancePage")
+    public String addChancePageMethod(Model model) {
+        //从缓存中查询出所有的用户
+        List<CrmUser> userList = cacheWrapperService.getUserCache();
+        //筛选出客户经理
+        List<CrmUser> cusMans = userList.stream()
+                .filter((user) -> user.getRoleId().intValue() == 3)
+                .collect(Collectors.toList());
+        //存储到model中
+        model.addAttribute("cusMans", cusMans);
+        return "sale/AddChancePage";
+    }
+
+    @RequestMapping("/addChance")
+    public String addChanceMethod(CrmChance chance) {
+        chance.setGmtCreated(new Date());
+        chance.setGmtModified(new Date());
+        //销售机会表
+        chanceService.addChance(chance);
+        //客户表
+        String cusName = chance.getCusName();
+        String phone = chance.getPhone();
+        String status = chance.getStatus().intValue() == 0 ? "DISABLE" : "ENABLE";
+        CrmCustomer customer = new CrmCustomer();
+        customer.setCusName(cusName);
+        customer.setPhone(phone);
+        customer.setStatus(status);
+        customerService.addCustomer(customer);
+        //重定向到销售机会列表
+        return "redirect:/MarketingController/chanceList.action";
+    }
 
 
     /*********************************************内置方法*****************************************/

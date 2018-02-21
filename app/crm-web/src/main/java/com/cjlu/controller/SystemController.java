@@ -53,6 +53,7 @@ public class SystemController {
             request.getSession().setAttribute("password", userDetail.getPassword());
             request.getSession().setAttribute("roleName", userDetail.getRoleName());
             request.getSession().setAttribute("rightUrl", userDetail.getRightUrl());
+            request.getSession().setAttribute("loginUser", userDetail);
         }
 
         return "home/home";

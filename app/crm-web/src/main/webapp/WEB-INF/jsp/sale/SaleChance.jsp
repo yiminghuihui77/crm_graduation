@@ -59,7 +59,7 @@
 					<!-- topic表格 显示 -->
 					<%--<div class="conShow">--%>
 						<div class="add">
-							<a class="addA addA1" href="${pageContext.request.contextPath }/MarketingController/addChange.action">添加销售机会</a>
+							<a class="addA addA1" href="${pageContext.request.contextPath }/MarketingController/addChancePage.action">添加销售机会</a>
 						</div>
 					<%--</div>--%>
 					</br>
@@ -88,7 +88,11 @@
 								<td>${chance.chanceDesc}</td>
 								<td>${chance.createName}</td>
 								<td>${chance.dueName}</td>
-								<td>${chance.status}</td>
+								<!--状态-->
+								<td>
+									<c:if test="${chance.status == 0}">未指派</c:if>
+									<c:if test="${chance.status == 1}">已指派</c:if>
+								</td>
 								<td>
 									<a href="${pageContext.request.contextPath }/MarketingController/editChancePage.action?id=${chance.id}">
 										<img class="operation" src="${pageContext.request.contextPath}/img/update.png">

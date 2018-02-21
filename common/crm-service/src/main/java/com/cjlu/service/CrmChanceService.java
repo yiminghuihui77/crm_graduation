@@ -1,6 +1,7 @@
 package com.cjlu.service;
 
 
+import com.cjlu.domain.CrmChance;
 import com.cjlu.model.ChanceDTO;
 
 import java.util.List;
@@ -17,5 +18,8 @@ public interface CrmChanceService {
     void removeChanceById(Integer id);
 
     /**更新销售机会*/
-    void refreshChance(ChanceDTO chanceDTO);
+    void refreshChance(CrmChance chance);
+
+    /**添加销售机会*/
+    void addChance(CrmChance chance);
 }

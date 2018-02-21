@@ -59,11 +59,18 @@
         where id = #{id}
     </delete>
 
-    <update id="updateChance" parameterType="com.cjlu.model.ChanceDTO" >
+    <update id="updateChance" parameterType="com.cjlu.domain.CrmChance" >
         update crm_chance
         set source =#{source}, cus_name=#{cusName},phone=#{phone},success_rate=#{successRate},
-            chance_desc=#{chanceDesc},create_id=#{createId},due_id=#{dueId},status=#{status}
+            chance_desc=#{chanceDesc},create_id=#{createId},due_id=#{dueId},status=#{status},gmt_modified=#{gmtModified}
         where id=#{id}
     </update>
+
+    <insert id="addChance" parameterType="com.cjlu.domain.CrmChance" >
+        insert into crm_chance(source,cus_name,phone,success_rate,chance_desc,create_id,due_id,
+                               status,gmt_created,gmt_modified)
+        values(#{source}, #{cusName}, #{phone}, #{successRate}, #{chanceDesc}, #{createId}, #{dueId},
+               #{status}, #{gmtCreated}, #{gmtModified})
+    </insert>
 
 </mapper>

@@ -3,6 +3,8 @@ package com.cjlu.model;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.Date;
+
 /**
  * @author minghui.y
  * @create 2018-02-20 13:23
@@ -43,4 +45,7 @@ public class ChanceDTO
 
     /** 机会状态：0未指派1已指派 */
     private Integer status;
+
+    /** 修改时间 */
+    private Date gmtModified;
 }
