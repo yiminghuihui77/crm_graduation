@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cjlu.dao.CrmActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.cjlu.domain.CrmActivity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cus_id" property="cusId" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="activity_desc" property="activityDesc" jdbcType="VARCHAR" />
+    <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cus_id, date, place, activity_desc, gmt_created, gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from crm_activity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByCusId" parameterType="java.lang.Integer" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from crm_activity
+    where cus_id = #{id}
+  </select>
+
+  <select id="selectByDate" parameterType="com.cjlu.model.DateSection" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from crm_activity
+    <where>
+      <if test="startDate != null" >
+        and date > #{startDate}
+      </if>
+      <if test="endDate != null" >
+        and date &lt; #{endDate}
+      </if>
+    </where>
+  </select>
+
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from crm_activity
+    where id = #{id}
+  </delete>
+
+  <update id="updateActivity" parameterType="com.cjlu.domain.CrmActivity" >
+    update crm_activity
+    set date=#{date},place=#{place},activity_desc=#{activityDesc},gmt_modified=#{gmtModified}
+    where id = #{id}
+  </update>
+
+  <insert id="addActivity" parameterType="com.cjlu.domain.CrmActivity" >
+    insert into crm_activity(cus_id,date,place,activity_desc,gmt_created,gmt_modified)
+    values(#{cusId},#{date},#{place},#{activityDesc},#{gmtCreated},#{gmtModified})
+  </insert>
+
+</mapper>

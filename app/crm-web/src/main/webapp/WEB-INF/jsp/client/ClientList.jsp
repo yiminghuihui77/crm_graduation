@@ -32,7 +32,7 @@
     });
 
     function queryByCusName(){
-        document.changeForm.action="${pageContext.request.contextPath}/MarketingController/queryChanceByCusName.action";
+        document.changeForm.action="${pageContext.request.contextPath}/ClientController/queryByCusName.action";
         document.changeForm.submit();
     }
 </script>
@@ -92,15 +92,15 @@
                             <td>${customer.addr}</td>
                             <td>${customer.memo}</td>
                             <td>
-                                <a class="delLink" href="${pageContext.request.contextPath }/ClientController/activityDetail.action?id=${customer.id}">
+                                <a href="${pageContext.request.contextPath }/ClientController/activityDetail.action?id=${customer.id}">
                                     <img class="operation delban" src="${pageContext.request.contextPath}/img/order.gif" height="25px" width="25px">
                                 </a>
                             </td>
                             <td>
-                                <a href="${pageContext.request.contextPath }/MarketingController/editChancePage.action?id=${customer.id}">
+                                <a href="${pageContext.request.contextPath }/ClientController/editCustomerPage.action?id=${customer.id}">
                                     <img class="operation" src="${pageContext.request.contextPath}/img/update.png">
                                 </a>
-                                <a class="delLink" href="${pageContext.request.contextPath }/MarketingController/removeChance.action?id=${customer.id}">
+                                <a class="delLink" href="${pageContext.request.contextPath }/ClientController/removeCustomer.action?id=${customer.id}">
                                     <img class="operation delban" src="${pageContext.request.contextPath}/img/delete.png">
                                 </a>
                             </td>

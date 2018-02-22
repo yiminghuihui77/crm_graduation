@@ -23,7 +23,7 @@
  
     <!-- 统一转配处理器映射器、处理器是适配器   -->
      <!--<mvc:annotation-driven validator="validationFactory" conversion-service="conversionService1"></mvc:annotation-driven>-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="dateConverter"></mvc:annotation-driven>
 
     <!-- 静态 资源解析 --> 
      <mvc:resources location="/js/"  mapping="/js/**"></mvc:resources>
@@ -70,15 +70,15 @@
      </bean>-->
  
     <!-- 格式转换工厂  -->
-     <!--<bean id="conversionService1" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        &lt;!&ndash; 添加转换器  &ndash;&gt;
+     <bean id="dateConverter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <!-- 添加转换器  -->
         <property name="converters">
           <list>
-              &lt;!&ndash; 自定义的日期格式转换   ymh &ndash;&gt;
-              <bean class="com.guigu.crm.converter.ActivityDateConverter"></bean>
+              <!-- 自定义的日期格式转换   ymh -->
+              <bean class="com.cjlu.conversion.DateConverter"></bean>
           </list> 
         </property>
-     </bean>-->
+     </bean>
      
      <!-- 拦截器的定义 -->
      <!--<mvc:interceptors>

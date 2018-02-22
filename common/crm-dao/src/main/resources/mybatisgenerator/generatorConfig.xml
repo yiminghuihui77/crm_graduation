@@ -41,8 +41,8 @@
 		
 		<!-- 要生成哪些表-->
 
-		<table tableName="crm_customer"
-		    domainObjectName="CrmCustomer"
+		<table tableName="crm_activity"
+		    domainObjectName="CrmActivity"
 		    enableUpdateByExample="false"
 		    enableUpdateByPrimaryKey="false"
 		    enableDeleteByExample="false"

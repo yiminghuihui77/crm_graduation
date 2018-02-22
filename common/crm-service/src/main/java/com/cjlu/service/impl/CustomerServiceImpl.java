@@ -32,4 +32,24 @@ public class CustomerServiceImpl implements CrmCustomerService {
     public List<CrmCustomer> queryByIdAndStatus(Integer id) {
         return customerMapper.selectByIdAndStatus(id);
     }
+
+    @Override
+    public List<CrmCustomer> queryByCusName(String cusName) {
+        return customerMapper.selectLikeName(cusName);
+    }
+
+    @Override
+    public void removeCustomer(Integer id) {
+        customerMapper.deleteCustomer(id);
+    }
+
+    @Override
+    public CrmCustomer queryById(Integer id) {
+        return customerMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void refreshCustomer(CrmCustomer customer) {
+        customerMapper.updateCustomer(customer);
+    }
 }

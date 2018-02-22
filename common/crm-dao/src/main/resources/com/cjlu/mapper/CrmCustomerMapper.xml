@@ -47,4 +47,23 @@
     and status = 'ENABLE'
   </select>
 
+  <select id="selectLikeName" parameterType="java.lang.String" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from crm_customer
+    where cus_name like '%${value}%'
+  </select>
+
+  <delete id="deleteCustomer" parameterType="java.lang.Integer" >
+    delete from crm_customer
+    where id = #{id}
+  </delete>
+
+  <update id="updateCustomer" parameterType="com.cjlu.domain.CrmCustomer" >
+    update crm_customer
+    set cus_name=#{cusName},sex=#{sex},region=#{region},cus_level=#{cusLevel},
+        credit=#{credit},addr=#{addr},phone=#{phone},memo=#{memo},gmt_modified=#{gmtModified}
+    where id = #{id}
+  </update>
+
 </mapper>
